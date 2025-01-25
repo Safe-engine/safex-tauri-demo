@@ -1,0 +1,48 @@
+{
+  "name": "pixi-safe-engine-demo",
+  "version": "1.0.1",
+  "description": "show case and code examples",
+  "type": "module",
+  "scripts": {
+    "export": "safex build -p ios",
+    "start": "parcel src/index.html -p 8080",
+    "dev": "parcel src/index.html -p 8080 --no-cache --no-hmr",
+    "build": "parcel build src/index.html --no-cache --no-optimize --no-content-hash",
+    "fix": "eslint ./src --ext .ts --fix"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@safe-engine/pixi": "*",
+    "safex": "npm:@safe-engine/pixi",
+    "howler-pixi-loader-middleware": "^5.0.0",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/plugin-syntax-jsx": "^7.25.9",
+    "@eslint/eslintrc": "^3.2.0",
+    "@eslint/js": "^9.18.0",
+    "@parcel/config-default": "^2.13.3",
+    "@types/lodash": "^4.17.14",
+    "@typescript-eslint/eslint-plugin": "^8.20.0",
+    "@typescript-eslint/parser": "^8.20.0",
+    "babel-plugin-safe-x-transform": "*",
+    "eslint": "^9.18.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-lodash-import-method": "^0.0.3",
+    "eslint-plugin-prettier": "^5.2.2",
+    "parcel": "^2.13.3",
+    "parcel-plugin-clean-easy": "^1.0.2",
+    "parcel-reporter-static-files-copy": "^1.5.3",
+    "typescript": "^5.7.3"
+  },
+  "parcelCleanPaths": [
+    "dist"
+  ],
+  "staticFiles": {
+    "staticPath": "res",
+    "watcherGlob": "**"
+  }
+}
