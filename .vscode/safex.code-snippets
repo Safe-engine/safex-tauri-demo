@@ -1,0 +1,41 @@
+{
+  "create new component class": {
+    "prefix": "class",
+    "body": [
+      "import { ComponentX } from 'safex'\n",
+      "export default class $TM_FILENAME_BASE extends ComponentX {\n",
+      "  node: NodeComp\n",
+      "  render() {",
+      "    return <SceneComponent>",
+      "    </SceneComponent>",
+      "  }",
+      "\n}\n"
+    ],
+    "description": "Create a new script component",
+    "scope": "typescript,typescriptreact"
+  },
+  "update": {
+    "prefix": "update",
+    "body": [
+      "update(dt: Float) {",
+      "  ${1}\n}"
+    ],
+    "scope": "typescript,typescriptreact"
+  },
+  "onCollisionEnter": {
+    "prefix": "onCollisionEnter",
+    "body": [
+      "  onCollisionEnter(other: Collider, self: Collider) {",
+      "\n  }"
+    ],
+    "scope": "typescript,typescriptreact"
+  },
+  "onBeginContact": {
+    "prefix": "onBeginContact",
+    "body": [
+      "    onBeginContact(contact: PhysicsContact, selfCollider: PhysicsCollider, otherCollider: PhysicsCollider) {",
+      "\n  }"
+    ],
+    "scope": "typescript,typescriptreact"
+  }
+}

@@ -1,5 +1,6 @@
 import { ButtonComp, ComponentX, LabelComp, SceneComponent, SpriteRender } from 'safex'
 import { defaultFont, sf_line } from '../assets'
+import Caro from '../components/Caro'
 
 export class Game extends ComponentX {
   score = 0
@@ -22,6 +23,10 @@ export class Game extends ComponentX {
         {Array(4).map(i => <SpriteRender
           node={{ x: 17 + i * 235, y: 300, angle: 90, width: 620 }}
           spriteFrame={sf_line} />)}
+        {Array(3).map((i) =>
+          Array(3).map((j) =>
+            <Caro node={{ x: 25 + i * 236, y: 318 + j * 205 }} />)
+        )}
       </SceneComponent>
     )
   }
