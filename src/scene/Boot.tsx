@@ -1,18 +1,18 @@
-import { Assets, ComponentX, SceneComponent, Texture } from 'safex';
+import { ComponentX, SceneComponent } from 'safex';
 
-import { sf_bitmap_2_yellow, sf_crash, sf_progress_bar } from '../assets';
-import { Loading } from './Loading';
+import { loadAssets } from '../binding/loader';
+import { Game } from './Game';
 
 export class Boot extends ComponentX {
   async start() {
-    await Assets.load<Texture>([
-      sf_crash,
-      sf_bitmap_2_yellow,
-      sf_progress_bar
-    ]);
-    // console.log('Boot start', sf_progress_bar)
-    // console.log(Assets.cache.get(sf_progress_bar));
-    Loading.create()
+    await loadAssets(this.onProgress.bind(this))
+  }
+
+  onProgress(p: number) {
+    // console.log('onProgress', p)
+    if (p === 1) {
+      setTimeout(() => Game.create())
+    }
   }
 
   render() {

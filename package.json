@@ -1,5 +1,5 @@
 {
-  "name": "pixi-safe-engine-demo",
+  "name": "safex-tauri-demo",
   "version": "1.0.1",
   "description": "show case and code examples",
   "type": "module",
@@ -14,28 +14,29 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@safe-engine/pixi": "*",
-    "safex": "npm:@safe-engine/pixi",
+    "@safe-engine/pixi": "^8.2.3",
     "howler-pixi-loader-middleware": "^5.0.0",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "safex": "npm:@safe-engine/pixi"
   },
   "devDependencies": {
-    "@babel/core": "^7.26.0",
+    "@babel/core": "^7.26.7",
     "@babel/plugin-syntax-jsx": "^7.25.9",
     "@eslint/eslintrc": "^3.2.0",
-    "@eslint/js": "^9.18.0",
+    "@eslint/js": "^9.19.0",
     "@parcel/config-default": "^2.13.3",
     "@types/lodash": "^4.17.14",
-    "@typescript-eslint/eslint-plugin": "^8.20.0",
-    "@typescript-eslint/parser": "^8.20.0",
-    "babel-plugin-safe-x-transform": "*",
-    "eslint": "^9.18.0",
+    "@typescript-eslint/eslint-plugin": "^8.21.0",
+    "@typescript-eslint/parser": "^8.21.0",
+    "babel-plugin-safe-x-transform": "^4.2.2",
+    "eslint": "^9.19.0",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-lodash-import-method": "^0.0.3",
-    "eslint-plugin-prettier": "^5.2.2",
+    "eslint-plugin-prettier": "^5.2.3",
     "parcel": "^2.13.3",
     "parcel-plugin-clean-easy": "^1.0.2",
     "parcel-reporter-static-files-copy": "^1.5.3",
+    "process": "^0.11.10",
     "typescript": "^5.7.3"
   },
   "parcelCleanPaths": [
