@@ -13,9 +13,9 @@
     "windows": [
       {
         "title": "safex-tauri-demo",
-        "width": 800,
-        "height": 600,
-        "resizable": true,
+        "width": 360,
+        "height": 640,
+        "resizable": false,
         "fullscreen": false
       }
     ],
