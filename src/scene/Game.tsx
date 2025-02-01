@@ -1,14 +1,17 @@
 import { Collider, ComponentX, ExtraDataComp, FederatedPointerEvent, LabelComp, NodeComp, pointInPolygon, SceneComponent, SpriteRender, TouchEventRegister } from 'safex'
 import { defaultFont, sf_line } from '../assets'
 import Caro from '../components/Caro'
+import { CHECK_CELLS_LIST } from '../helper/logic'
 
 export class Game extends ComponentX {
   score = 0
   root: NodeComp
+  isX = false
   carosList: Caro[] = []
 
   start() {
-    // this.root.instance.interactive = true
+    // hide all caros in list
+    this.carosList.forEach(caro => caro.hide())
   }
 
   onTouchStart(event: FederatedPointerEvent) {
@@ -18,6 +21,30 @@ export class Game extends ComponentX {
       return pointInPolygon(event.global, points)
     })
     console.log('Clicked', clicked?.node.getData('id'))
+    if (clicked.value) return
+    if (this.isX) {
+      this.isX = false
+      clicked?.setO()
+    } else {
+      this.isX = true
+      clicked?.setX()
+    }
+    if (this.checkWin()) {
+      console.log(this.isX ? 'X win!' : 'O win!')
+    }
+  }
+
+  checkWin() {
+    //check logic for tic tac toe game with caros list
+    const board = this.carosList.map(c => c.value)
+    function checkIndexArray(arr: number[] = []) {
+      if (arr.some((idx) => !board[idx])) return false
+      const [i1, i2, i3] = arr
+      return (
+        board[i1] === board[i2] && board[i2] === board[i3]
+      )
+    }
+    return CHECK_CELLS_LIST.some(checkIndexArray)
   }
 
   render() {
