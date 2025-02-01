@@ -14,7 +14,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@safe-engine/pixi": "^8.2.8",
+    "@safe-engine/pixi": "^8.2.9",
     "howler-pixi-loader-middleware": "^5.0.0",
     "lodash": "^4.17.21",
     "safex": "npm:@safe-engine/pixi"

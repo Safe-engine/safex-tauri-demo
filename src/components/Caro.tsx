@@ -18,7 +18,7 @@ export default class Caro extends ComponentX {
 
   setO() {
     this.node.active = true
-    this.sprite.setSpriteFrame(sf_circle)
+    this.sprite.spriteFrame = sf_circle
     this.value = 'o'
   }
 
