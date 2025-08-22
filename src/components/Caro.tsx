@@ -25,7 +25,7 @@ export default class Caro extends ComponentX {
 
   render() {
     return <SpriteRender $ref={this.sprite} spriteFrame={sf_x}>
-      <BoxCollider height={189} width={225} offset={[-10, -8]} />
+      <BoxCollider height={189} width={225} offset={[-112, -94]} />
     </SpriteRender>
   }
 

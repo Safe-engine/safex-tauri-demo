@@ -16,14 +16,12 @@ export function loadAssets(cb: (progress: number) => void, onCompleted: () => vo
   })
   Assets.addBundle('fonts', fontBundle)
   const keys = []
+  Object.keys(AudioAssets).map((key) => {
+    keys.push(AudioAssets[key])
+  })
   return Promise.all([
     Assets.loadBundle('fonts'),
     Assets.load(keys),
-    ...Object.keys(AudioAssets).map((key) => {
-      return Assets.load(AudioAssets[key]).then((audioResource) => {
-        AudioAssets[key] = audioResource
-      })
-    }),
   ]).then(async () => {
     await Assets.load<Texture>(Object.values(TextureAssets), cb)
     onCompleted()

@@ -1,6 +1,6 @@
 import { ComponentX, ExtraDataComp, LabelComp, NodeComp, SceneComponent, SpriteRender, Touch, TouchEventRegister } from '@safe-engine/pixi'
 import { Collider, pointInPolygon } from '@safe-engine/pixi/dist/collider'
-import { defaultFont, sf_line } from '../assets'
+import { sf_line } from '../assets'
 import Caro from '../components/Caro'
 import { CHECK_CELLS_LIST } from '../helper/logic'
 
@@ -51,15 +51,15 @@ export class Game extends ComponentX {
   render() {
     return (
       <SceneComponent $refNode={this.root}>
-        <TouchEventRegister onTouchStart={this.onTouchStart.bind(this)} />
-        <LabelComp node={{ xy: [106, 240] }} string="Game" font={defaultFont} />
-        {Array(4).map(i => <SpriteRender node={{ posY: i * 200 + 300 }} spriteFrame={sf_line} />)}
+        <TouchEventRegister onTouchStart={this.onTouchStart} />
+        <LabelComp node={{ xy: [320, 140] }} string="Game" />
+        {Array(4).map(i => <SpriteRender node={{ xy: [120,i * 200 + 300] }} spriteFrame={sf_line} />)}
         {Array(4).map(i => <SpriteRender
-          node={{ xy: [17 + i * 235, 300], angle: 90, width: 620 }}
+          node={{ xy: [8 + i * 235, 600], angle: 90, width: 620 }}
           spriteFrame={sf_line} />)}
         {Array(3).map((i) =>
           Array(3).map((j) =>
-            <Caro $push={this.carosList} node={{ xy: [25 + i * 236, 318 + j * 205] }} >
+            <Caro $push={this.carosList} node={{ xy: [125 + i * 236, 395 + j * 201] }} >
               <ExtraDataComp key='id' value={j * 3 + i} />
             </Caro>)
         )}

@@ -3,15 +3,18 @@
     "jsx": "preserve",
     "target": "es5",
     "esModuleInterop": true,
+    "skipLibCheck": true,
     "lib": [
-      "es2017",
-      "dom",
-      "scripthost"
+      "ES2022",
+      "DOM"
     ],
     "typeRoots": [
       "@types",
       "node_modules/@types"
     ],
     "moduleResolution": "node"
-  }
+  },
+  "exclude": [
+    "vite.config.ts"
+  ]
 }

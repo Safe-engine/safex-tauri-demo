@@ -9,14 +9,13 @@ export class Loading extends ComponentX {
   loadingSprite: ProgressTimerComp
 
   async start() {
-    console.log('Loading start')
     await loadAssets(this.onProgress.bind(this), () => {
       loadScene(Game)
     })
   }
 
   onProgress(p: Float) {
-    console.log('onProgress', p)
+    // console.log('onProgress', p)
     this.loadingSprite.fillRange = p
   }
 
