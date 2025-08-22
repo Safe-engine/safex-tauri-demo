@@ -1,1 +1,0 @@
-export const defaultFont = 'font/LilitaOne-Regular.ttf'

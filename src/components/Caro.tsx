@@ -1,4 +1,5 @@
-import { BoxCollider, ComponentX, SpriteRender, v2 } from 'safex'
+import { ComponentX, SpriteRender } from '@safe-engine/pixi'
+import { BoxCollider } from '@safe-engine/pixi/dist/collider'
 import { sf_circle, sf_x } from '../assets'
 
 export default class Caro extends ComponentX {
@@ -24,7 +25,7 @@ export default class Caro extends ComponentX {
 
   render() {
     return <SpriteRender $ref={this.sprite} spriteFrame={sf_x}>
-      <BoxCollider height={189} width={225} offset={v2(-10, -8)} />
+      <BoxCollider height={189} width={225} offset={[-10, -8]} />
     </SpriteRender>
   }
 

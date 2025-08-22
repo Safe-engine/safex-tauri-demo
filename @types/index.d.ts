@@ -1,3 +1,6 @@
+declare type Float = number
+declare type Integer = number
+
 interface HMR {
   accept: (cb?: () => void) => void
   dispose: (cb?: () => void) => void

@@ -1,33 +1,14 @@
-import { addGameCanvasTo, app, extensions, ResizePlugin, setupResolution, startGameSystems, TickerPlugin } from 'safex'
+import { Assets, loadScene, startGame, Texture } from '@safe-engine/pixi'
+import { setupCollider } from '@safe-engine/pixi/dist/collider'
 
-import { Boot } from './scene/Boot'
-import { settings } from './settings'
-
-const { designedResolution } = settings
+import { defaultFont, sf_progress_bar, sf_progress_bg } from './assets'
+import { Loading } from './scene/Loading'
+import { designedResolution } from './settings'
 
 async function start() {
-  await addGameCanvasTo()
-  Object.assign(app.canvas.style, {
-    width: `${window.innerWidth}px`,
-    height: `${window.innerHeight}px`,
-    overflow: 'visible',
-  })
-  setupResolution(designedResolution)
-  startGameSystems()
-  Boot.create()
+  await startGame(defaultFont, designedResolution, Assets)
+  await Assets.load<Texture>([sf_progress_bar, sf_progress_bg])
+  setupCollider([true], true)
+  loadScene(Loading)
 }
 start()
-
-if (module.hot) {
-  module.hot.dispose(() => {
-    try {
-      extensions.remove(ResizePlugin)
-      extensions.remove(TickerPlugin)
-    } catch (error) {
-      console.log(error)
-    }
-  })
-  module.hot.accept(() => {
-    console.log('hot accept is needed')
-  })
-}

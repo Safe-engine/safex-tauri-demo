@@ -1,8 +1,0 @@
-{
-  "presets": [
-  ],
-  "plugins": [
-    "@babel/plugin-syntax-jsx",
-    "babel-plugin-safe-x-transform"
-  ]
-}
