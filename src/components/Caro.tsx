@@ -3,7 +3,6 @@ import { BoxCollider } from '@safe-engine/pixi/dist/collider'
 import { sf_circle, sf_x } from '../assets'
 
 export default class Caro extends ComponentX {
-
   sprite: SpriteRender
   value = ''
 

@@ -1,12 +1,13 @@
-import { ComponentX, ExtraDataComp, LabelComp, NodeComp, SceneComponent, SpriteRender, Touch, TouchEventRegister } from '@safe-engine/pixi'
+import { ButtonComp, ComponentX, ExtraDataComp, instantiate, LabelComp, loadScene, SceneComponent, SpriteRender, Touch, TouchEventRegister, Vec2 } from '@safe-engine/pixi'
 import { Collider, pointInPolygon } from '@safe-engine/pixi/dist/collider'
-import { sf_line } from '../assets'
+import { sf_button, sf_line } from '../assets'
 import Caro from '../components/Caro'
+import FlyingText from '../components/FlyingText'
+import { ORANGE } from '../helper/constant'
 import { CHECK_CELLS_LIST } from '../helper/logic'
 
 export class Game extends ComponentX {
   score = 0
-  root: NodeComp
   isX = false
   carosList: Caro[] = []
 
@@ -21,8 +22,8 @@ export class Game extends ComponentX {
       const points = caro.getComponent(Collider)._worldPoints
       return pointInPolygon(event.getLocation(), points)
     })
+    if (!clicked || clicked.value) return
     console.log('Clicked', clicked?.node.getData('id'))
-    if (clicked.value) return
     if (this.isX) {
       this.isX = false
       clicked?.setO()
@@ -32,6 +33,10 @@ export class Game extends ComponentX {
     }
     if (this.checkWin()) {
       console.log(this.isX ? 'X win!' : 'O win!')
+      const flyingText = instantiate(FlyingText)
+      flyingText.label.string = this.isX ? 'X win!' : 'O win!'
+      flyingText.node.position = Vec2(320, 600)
+      this.node.addChild(flyingText.node)
     }
   }
 
@@ -48,12 +53,16 @@ export class Game extends ComponentX {
     return CHECK_CELLS_LIST.some(checkIndexArray)
   }
 
+  replay() {
+    loadScene(Game)
+  }
+
   render() {
     return (
-      <SceneComponent $refNode={this.root}>
+      <SceneComponent>
         <TouchEventRegister onTouchStart={this.onTouchStart} />
         <LabelComp node={{ xy: [320, 140] }} string="Game" />
-        {Array(4).map(i => <SpriteRender node={{ xy: [120,i * 200 + 300] }} spriteFrame={sf_line} />)}
+        {Array(4).map(i => <SpriteRender node={{ xy: [120, i * 200 + 300] }} spriteFrame={sf_line} />)}
         {Array(4).map(i => <SpriteRender
           node={{ xy: [8 + i * 235, 600], angle: 90, width: 620 }}
           spriteFrame={sf_line} />)}
@@ -63,6 +72,11 @@ export class Game extends ComponentX {
               <ExtraDataComp key='id' value={j * 3 + i} />
             </Caro>)
         )}
+        <SpriteRender node={{ xy: [320, 1120] }} spriteFrame={sf_button} >
+          <LabelComp string="Replay" size={36} node={{ color: ORANGE }} />
+          <ButtonComp onPress={this.replay} />
+        </SpriteRender>
+
       </SceneComponent>
     )
   }

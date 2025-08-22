@@ -2,6 +2,7 @@
   "compilerOptions": {
     "jsx": "preserve",
     "target": "es5",
+    "outDir": "dist",
     "esModuleInterop": true,
     "skipLibCheck": true,
     "lib": [

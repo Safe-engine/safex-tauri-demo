@@ -15,7 +15,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@safe-engine/pixi": "^8.6.6",
+    "@safe-engine/pixi": "^8.6.7",
     "howler-pixi-loader-middleware": "^5.0.0"
   },
   "devDependencies": {
