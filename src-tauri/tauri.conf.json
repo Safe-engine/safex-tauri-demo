@@ -2,12 +2,12 @@
   "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
   "productName": "safex-tauri-demo",
   "version": "0.1.0",
-  "identifier": "com.tauri.dev",
+  "identifier": "safex.tauri.demo",
   "build": {
     "frontendDist": "../dist",
-    "devUrl": "http://localhost:8080",
-    "beforeDevCommand": "bun dev",
-    "beforeBuildCommand": "bun build"
+    "devUrl": "http://localhost:5173",
+    "beforeDevCommand": "bun run dev",
+    "beforeBuildCommand": "bun run build"
   },
   "app": {
     "windows": [
@@ -24,6 +24,9 @@
     }
   },
   "bundle": {
+    "android": {
+      "versionCode": 100
+    },
     "active": true,
     "targets": "all",
     "icon": [
