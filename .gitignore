@@ -17,3 +17,6 @@ node_modules/
 # public/
 
 build/
+src-tauri/
+assets/
+.safex

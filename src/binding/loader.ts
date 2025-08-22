@@ -1,13 +1,13 @@
 import HowlerLoaderParser from 'howler-pixi-loader-middleware'
 
-import { Assets, extensions, Texture } from 'safex'
+import { Assets, extensions, Texture } from '@safe-engine/pixi'
 import * as AudioAssets from '../assets/AudioAssets'
 import * as FontAssets from '../assets/FontAssets'
 import * as TextureAssets from '../assets/TextureAssets'
 
 extensions.add(HowlerLoaderParser)
 
-export function loadAssets(cb: (progress: number) => void) {
+export function loadAssets(cb: (progress: number) => void, onCompleted: () => void) {
   // load the texture we need
   const fontBundle = {}
   Object.keys(FontAssets).forEach((key) => {
@@ -16,16 +16,15 @@ export function loadAssets(cb: (progress: number) => void) {
   })
   Assets.addBundle('fonts', fontBundle)
   const keys = []
+  Object.keys(AudioAssets).map((key) => {
+    keys.push(AudioAssets[key])
+  })
   return Promise.all([
     Assets.loadBundle('fonts'),
     Assets.load(keys),
-    ...Object.keys(AudioAssets).map((key) => {
-      return Assets.load(AudioAssets[key]).then((audioResource) => {
-        AudioAssets[key] = audioResource
-      })
-    }),
-  ]).then(() => {
-    return Assets.load<Texture>(Object.values(TextureAssets), cb)
+  ]).then(async () => {
+    await Assets.load<Texture>(Object.values(TextureAssets), cb)
+    onCompleted()
   })
 }
 
