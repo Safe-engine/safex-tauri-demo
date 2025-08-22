@@ -4,7 +4,7 @@
   "description": "show case and code examples",
   "type": "module",
   "scripts": {
-    "android": "bun tauri android build --apk --target x86_64",
+    "android": "bun tauri android build --apk --split-per-abi",
     "sync-res": "bun ./node_modules/safex-sync-res/src/index.ts",
     "predev": "bun run sync-res",
     "dev": "vite",
